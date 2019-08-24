@@ -3,19 +3,12 @@ const pathUtil = require('../util/path');
 
 const router = express.Router();
 
-// /admin/add-product => GET
-router.get('/add-product', (req, res, next) => {
-  res.render('add-product', {
-    pageTitle: 'Add Product',
-    path: 'add-product'
-  });
-});
+const productController = require('../controller/product');
 
+// /admin/add-product => GET
+router.get('/add-product', productController.getAddProduct);
 
 // /admin/add-product => POST
-router.post('/add-product', (req, res, next) => {
-  console.log(req.body);
-  res.redirect('/');
-});
+router.post('/add-product', productController.postAddProduct);
 
 module.exports = router;

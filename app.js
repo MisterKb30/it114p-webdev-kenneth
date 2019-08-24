@@ -6,6 +6,7 @@ app.set('view engine', 'ejs');
 
 const shopRoutes = require('./routes/shop');
 const adminRoutes = require('./routes/admin');
+const errorController = require('./controller/error');
 const util = require('./util/path');
 
 //prereq
@@ -18,12 +19,7 @@ app.use(express.static(util.public));
 app.use(shopRoutes);
 app.use(adminRoutes);
 
-app.use((req, res, next) => {
-    res.status(404).render('404', {
-        pageTitle: '404 - Page Not Found',
-        path: '/'
-    });
-});
+app.use(errorController.get404);
 
 
 app.listen(3000);
