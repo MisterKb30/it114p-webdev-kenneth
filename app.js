@@ -13,7 +13,7 @@ app.use(express.static(util.public));
 app.use(shopRoutes);
 app.use('/admin',adminRoutes);
 
-app.use((req,res,next)=> {
+app.use((req,res)=> {
     res.status(404).sendFile(util.views + "404.html")
     //res.send('Hello Kenneth');
 });
